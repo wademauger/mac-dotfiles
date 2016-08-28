@@ -1,0 +1,18 @@
+alias c='clear'
+alias x='exit'
+alias g='git'
+alias vim='nvim'
+alias ga='git add'
+alias gc='git commit'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias gps='git push'
+alias gpl='git pull'
+alias gs='git status'
+alias topten='print -l -- ${(o)history%% *} | uniq -c | sort -nr | head -n 10'
+alias sl='ls'
+alias p='python'
+alias ls="ls --color=always"
+alias grep="grep --color=always"
+alias egrep="egrep --color=always"
+alias server="python -m SimpleHTTPServer 8000"

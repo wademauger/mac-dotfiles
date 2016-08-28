@@ -1,0 +1,19 @@
+function o() {
+  if [ -e .windows ]
+  then
+    source .windows    
+  else
+    tmux split-window -v
+    tmux split-window -t 2 -h
+    tmux resize-pane -D 8
+    tmux select-pane -t 1
+    tmux send-keys -t 1 'clear' Enter
+  fi
+}
+function slay () {
+    kill -9 $(ps aux | grep $1 | awk '{print $2}')
+}
+
+function genRand () {
+    < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;
+}
