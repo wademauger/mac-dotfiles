@@ -19,7 +19,11 @@ call plug#end()
 
 syntax enable
 filetype plugin indent on
-set t_Co=256
+
+if filereadable(expand("~/.vimrc_background"))
+	let base16colorspace=256
+	source ~/.vimrc_background
+endif
 
 inoremap jj <Esc>
 set timeoutlen=1000 ttimeoutlen=0

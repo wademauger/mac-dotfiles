@@ -5,6 +5,8 @@ git submodule update
 
 dotfile_location=`pwd`
 
+git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+
 ln -s $dotfile_location/aliases $HOME/.aliases
 ln -s $dotfile_location/functions $HOME/.functions
 ln -s $dotfile_location/oh-my-zsh $HOME/.oh-my-zsh
