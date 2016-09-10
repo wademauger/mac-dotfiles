@@ -1,20 +1,22 @@
-export ZSH=/home/dylan/.oh-my-zsh
+export ZSH=/Users/wmauger/.oh-my-zsh
 
-ZSH_THEME="sunrise"
+ZSH_THEME="powerlevel9k/powerlevel9k"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
+DEFAULT_USER=`whoami`
 plugins=(git)
 unsetopt AUTO_CD
 
 source $ZSH/oh-my-zsh.sh
 
-eval `dircolors ~/.dircolors`
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.tmuxifier/bin:$PATH"
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+eval `dircolors ~/.dircolors`
 
 KEYTIMEOUT=1
 
-set -o vi
+export VISUAL=vim
+export EDITOR="$VISUAL"
 
 foreground-vi() {
   fg %nvim
@@ -42,4 +44,8 @@ fi
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
+# bind -x '"\C-l": clear;"'
+
 [[ ! $TERM =~ "screen" ]] && tmux
+
+tmux source-file ~/.tmux.conf
