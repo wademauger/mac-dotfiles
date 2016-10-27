@@ -10,6 +10,7 @@ unsetopt AUTO_CD
 source $ZSH/oh-my-zsh.sh
 
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.tmuxifier/bin:$PATH"
+export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 
 eval `dircolors ~/.dircolors`
 
@@ -49,3 +50,6 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 [[ ! $TERM =~ "screen" ]] && tmux
 
 tmux source-file ~/.tmux.conf
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+eval "$(jenv init -)"
