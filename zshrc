@@ -53,3 +53,5 @@ tmux source-file ~/.tmux.conf
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 eval "$(jenv init -)"
+
+export PATH="$HOME/.yarn/bin:$PATH"
