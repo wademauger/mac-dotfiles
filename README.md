@@ -5,4 +5,6 @@ A set of dotfiles from my Mac OS setup. Lots of custom stuff, YMMV
 
 Symlinks the dot-files and runs the setup installation scripts:
 
-`chmod +x ./setup.sh ./homebrew.sh && ./setup.sh && ./homebrew.sh`
+```Bash
+git clone git@github.com:wadeanthony0100/mac-dotfiles.git && cd mac-dotfiles && chmod +x ./setup.sh ./homebrew.sh && ./setup.sh && ./homebrew.sh
+```
