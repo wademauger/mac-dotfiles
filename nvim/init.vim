@@ -56,13 +56,13 @@ set splitright
 set pastetoggle=<F2>
 map <F7> mzgg=G`z
 
-" Autoformat document                                                                                                                     
-nnoremap F gg=G''
-
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 let mapleader = ","
 
 set mouse-=a
+
+" Autoformat document                                                                                                                     
+nnoremap F gg=G''
 
 """"""""""""""""""""""""""""""
 "          Undo              "
@@ -90,7 +90,8 @@ let g:multi_cursor_quit_key='<Esc>'
 let g:context_filetype#same_filetypes = {}
 let g:context_filetype#same_filetypes.js = 'jsx'
 let g:context_filetype#same_filetypes.jsx = 'js'
-let g:deoplete#enable_at_startup = 1 if !exists('g:deoplete#omni#input_patterns')
+let g:deoplete#enable_at_startup = 1
+if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
