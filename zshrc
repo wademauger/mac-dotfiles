@@ -1,4 +1,5 @@
-export ZSH=/Users/wmauger/.oh-my-zsh
+export ZSH=/Users/wadeanthony/.oh-my-zsh
+export TERM="xterm-256color"
 
 ZSH_THEME="powerlevel9k/powerlevel9k"
 COMPLETION_WAITING_DOTS="true"
@@ -10,7 +11,6 @@ unsetopt AUTO_CD
 source $ZSH/oh-my-zsh.sh
 
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.tmuxifier/bin:$PATH"
-export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 
 eval `dircolors ~/.dircolors`
 
@@ -47,7 +47,9 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 
 # bind -x '"\C-l": clear;"'
 
-[[ ! $TERM =~ "screen" ]] && tmux
+if ! { [ "$TMUX" != "" ]; } then
+  tmux
+fi
 
 tmux source-file ~/.tmux.conf
 export PATH="$HOME/.jenv/bin:$PATH"
@@ -57,3 +59,6 @@ eval "$(jenv init -)"
 export PATH="$HOME/.yarn/bin:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+source  ~/powerlevel9k/powerlevel9k.zsh-theme
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

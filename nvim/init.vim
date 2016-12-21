@@ -3,9 +3,7 @@
 """"""""""""""""""""""""""""""
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/context_filetype.vim'
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript'
@@ -19,10 +17,13 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'elixir-lang/vim-elixir'
 Plug 'elmcast/elm-vim'
 
+
 call plug#end()
 
 syntax enable
 filetype plugin indent on
+colorscheme onedark
+
 
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
@@ -103,12 +104,6 @@ augroup omnifuncs
   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup end
-
-  if exists('g:plugs["tern_for_vim"]')
-    let g:tern_show_argument_hints = 'on_hold'
-    let g:tern_show_signature_in_pum = 1
-    autocmd FileType javascript setlocal omnifunc=tern#Complete
-  endif
 
   """"""""""""""""""""""""""""""
   "          MARKDOWN          "
