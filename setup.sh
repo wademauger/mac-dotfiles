@@ -14,7 +14,7 @@ ln -s $dotfile_location/zshrc $HOME/.zshrc
 ln -s $dotfile_location/tmux.conf $HOME/.tmux.conf
 ln -s $dotfile_location/nvim $HOME/.config/nvim
 ln -s $dotfile_location/dircolors $HOME/.dircolors
-ln -s $dotfile_location/gitignroe $HOME/.gitignore:w
+ln -s $dotfile_location/gitignroe $HOME/.gitignore
 
 # Install yarn package manager for JavaScript
 curl -o- -L https://yarnpkg.com/install.sh | bash
