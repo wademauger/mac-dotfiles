@@ -14,9 +14,13 @@ ln -s $dotfile_location/zshrc $HOME/.zshrc
 ln -s $dotfile_location/tmux.conf $HOME/.tmux.conf
 ln -s $dotfile_location/nvim $HOME/.config/nvim
 ln -s $dotfile_location/dircolors $HOME/.dircolors
+ln -s $dotfile_location/gitignroe $HOME/.gitignore:w
 
 # Install yarn package manager for JavaScript
 curl -o- -L https://yarnpkg.com/install.sh | bash
 
 # Install Homebrew system package manager
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# Tell Git to acknowledge the global gitignore
+git config --global core.excludesfile $HOME/.gitignore
