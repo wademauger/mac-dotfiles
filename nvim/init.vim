@@ -16,7 +16,8 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'elixir-lang/vim-elixir'
 Plug 'elmcast/elm-vim'
-
+Plug 'keith/swift.vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 
@@ -31,6 +32,7 @@ if filereadable(expand("~/.vimrc_background"))
 endif
 
 inoremap jj <Esc>
+inoremap kkk <Esc>
 set timeoutlen=1000 ttimeoutlen=0
 
 set autoindent
