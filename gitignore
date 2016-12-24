@@ -12,5 +12,3 @@
 /.rvmrc
 /.rbenv-version
 
-# Bundler binstubs
-/bin/
