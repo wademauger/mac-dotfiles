@@ -1,30 +1,17 @@
-# Borrowed aliases
 alias c='clear'
 alias x='exit'
-alias g='git'
 alias vim='nvim'
 alias topten='print -l -- ${(o)history%% *} | uniq -c | sort -nr | head -n 10'
 alias p='python'
 alias ls="ls --color=always"
 alias grep="grep --color=always"
 alias egrep="egrep --color=always"
-
-# Pre-existing aliases
 alias -g nitron=wam9729@nitron.se.rit.edu
-alias ga='git add'
-alias gc='git commit'
-alias gco='git checkout'
-alias gp='git push'
-alias gs='git status'
-alias gd='git diff'
-alias gpom='git push origin master'
-alias gitUpdateReadme='git add ./README.md && git commit -m "Update README.md" && gpom'
-alias subgpom='git push origin HEAD:master'
 alias cd..='cd ..'
 alias sshRichland='ssh -p 2222 richboro@richlandborough.org'
 alias tload='tmuxifier load-window'
 alias extract='dtrx'
-alias t='tree -I node_modules'
+alias t='tree -I node_modules -I _build -I deps'
 alias theHub=ncdc
 alias copy='xclip -i'
 alias energia='~/Downloads/energia-0101E0017-linux64/energia-0101E0017/energia &'
@@ -37,4 +24,21 @@ alias wq='sl'
 alias :wq='sl'
 alias whatsRunning='ps auxwww'
 alias vimClearCache='rm -rf ~/.local/share/nvim/swap/*'
-
+alias g='git'
+alias ga='git add'
+alias gc='git commit'
+alias gca='git commit --amend'
+alias gco='git checkout'
+alias gp='git push'
+alias gs='git status'
+alias gd='git diff'
+alias gg='git grog'
+alias grc='git rebase --continue'
+alias gra='git rebase --abort'
+alias gpom='git push origin master'
+alias gitUpdateReadme='git add ./README.md && git commit -m "Update README.md" && gpom'
+alias subgpom='git push origin HEAD:master'
+alias ectoTryAgain="mix ecto.drop && mix ecto.create && mix ecto.migrate"
+alias exe=exercism
+alias sshAWS='ssh -i "~/.ssh/myFirstEC2instance.pem" ec2-user@ec2-35-173-205-45.compute-1.amazonaws.com'
+git config --global alias.grog 'log --graph --abbrev-commit --decorate --all --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)"'

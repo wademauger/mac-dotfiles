@@ -10,10 +10,21 @@ function o() {
     tmux send-keys -t 1 'clear' Enter
   fi
 }
+
 function slay () {
     kill -9 $(ps aux | grep $1 | awk '{print $2}')
 }
 
 function genRand () {
     < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;
+}
+
+function copyImg () {
+    if [ -d "/Volumes/boot" ]; then 
+        echo copying $1 to /Volumes/boot... ; 
+        cp $1 /Volumes/boot;
+        echo Done. ; 
+    else
+        echo /Volumes/boot NOT FOUND.
+    fi
 }

@@ -4,20 +4,37 @@
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'Shougo/context_filetype.vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'carlitux/deoplete-ternjs',          { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install -g tern' }
+Plug 'ternjs/tern_for_vim',               { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript'
+Plug 'juancampa/solvent.vim'
 Plug 'mxw/vim-jsx'
+Plug 'ianks/vim-tsx'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'chriskempson/base16-vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'leafgarland/typescript-vim'
 Plug 'elixir-lang/vim-elixir'
+Plug 'slashmili/alchemist.vim'
 Plug 'elmcast/elm-vim'
 Plug 'keith/swift.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'idris-hackers/idris-vim'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'vim-ruby/vim-ruby'
+Plug 'rust-lang/rust.vim'
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'shougo/echodoc.vim'
+Plug 'reasonml-editor/vim-reason'
+Plug 'raichoo/purescript-vim'
+Plug 'joshhartigan/vim-reddit'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -107,57 +124,71 @@ augroup omnifuncs
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup end
 
-  """"""""""""""""""""""""""""""
-  "          MARKDOWN          "
-  """"""""""""""""""""""""""""""
-  autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" ultisnips for Deoplete
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-  """"""""""""""""""""""""""""""
-  "          PYTHON            "
-  """"""""""""""""""""""""""""""
-  let python_highlight_all = 1
-  autocmd BufWritePre *.py normal m`:%s/\s\+$//e``
-  autocmd BufNewFile,BufRead *.py :setlocal sw=4 ts=4 sts=4
+""""""""""""""""""""""""""""""
+"          MARKDOWN          "
+""""""""""""""""""""""""""""""
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-  """"""""""""""""""""""""""""""
-  "          JAVASCRIPT        "
-  """"""""""""""""""""""""""""""
-  let g:jsx_ext_required = 0
+""""""""""""""""""""""""""""""
+"          VCXPROJ           "
+""""""""""""""""""""""""""""""
 
-  """"""""""""""""""""""""""""""
-  "          HTML              "
-  """"""""""""""""""""""""""""""
-  set matchpairs+=<:>
-  let g:html_indent_tags = 'li\|p'
+let g:context_filetype#same_filetypes.vcxproj = 'xml'
+let g:context_filetype#same_filetypes.vcxproj = 'xml'
 
-  """"""""""""""""""""""""""""""
-  "          TABS              "
-  """"""""""""""""""""""""""""""
-  nnoremap tl :tabnext<CR>
-  nnoremap th :tabprev<CR>
-  nnoremap tt :tabnew<CR>
+""""""""""""""""""""""""""""""
+"          PYTHON            "
+""""""""""""""""""""""""""""""
+let python_highlight_all = 1
+autocmd BufWritePre *.py normal m`:%s/\s\+$//e``
+autocmd BufNewFile,BufRead *.py :setlocal sw=4 ts=4 sts=4
 
-  """"""""""""""""""""""""""""""
-  "          CTRLP             "
-  """"""""""""""""""""""""""""""
-  " let g:ctrlp_map = '<c-n>'
-  let g:ctrlp_cmd = 'CtrlP'
-  let g:ctrlp_working_path_mode = 'ra'
-  let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
-  let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+""""""""""""""""""""""""""""""
+"          JAVASCRIPT        "
+""""""""""""""""""""""""""""""
+let g:jsx_ext_required = 0
+let g:javascript_plugin_flow = 1
+
+""""""""""""""""""""""""""""""
+"          HTML              "
+""""""""""""""""""""""""""""""
+set matchpairs+=<:>
+let g:html_indent_tags = 'li\|p'
+
+""""""""""""""""""""""""""""""
+"          TABS              "
+""""""""""""""""""""""""""""""
+nnoremap tl :tabnext<CR>
+nnoremap th :tabprev<CR>
+nnoremap tt :tabnew<CR>
+
+""""""""""""""""""""""""""""""
+"          CTRLP             "
+""""""""""""""""""""""""""""""
+" let g:ctrlp_map = '<c-n>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 
-  """"""""""""""""""""""""""""""
-  "          TMUX              "
-  """"""""""""""""""""""""""""""
-  " See Dylan
+""""""""""""""""""""""""""""""
+"          TMUX              "
+""""""""""""""""""""""""""""""
+" See Dylan
 
-  """"""""""""""""""""""""""""""
-  "          HASKELL           "
-  """"""""""""""""""""""""""""""
-  let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
-  let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
-  let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
-  let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
-  let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
-  let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+""""""""""""""""""""""""""""""
+"          HASKELL           "
+""""""""""""""""""""""""""""""
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
