@@ -81,3 +81,8 @@ eval "$(pyenv init -)"
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
 [[ -f /Users/wadeanthony/.nvm/versions/node/v8.9.3/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/wadeanthony/.nvm/versions/node/v8.9.3/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh
+
+[ -s "/Users/wadeanthony/.jabba/jabba.sh" ] && source "/Users/wadeanthony/.jabba/jabba.sh"
+export PATH="/usr/local/opt/ncurses/bin:$PATH"
+export PATH="/usr/local/opt/libxml2/bin:$PATH"
+source /Users/wadeanthony/.ghcup/env
